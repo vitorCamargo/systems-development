@@ -1,0 +1,27 @@
+C:\Users\Vitor\Documents\Documentos\Escola\Escola\3º ano\DS\2º Semestre\3º Bimestre\prjRevisao\prjRevisao\bin\Debug\prjRevisao.exe.config
+C:\Users\Vitor\Documents\Documentos\Escola\Escola\3º ano\DS\2º Semestre\3º Bimestre\prjRevisao\prjRevisao\obj\Debug\prjRevisao.csprojResolveAssemblyReference.cache
+C:\Users\Vitor\Documents\Documentos\Escola\Escola\3º ano\DS\2º Semestre\3º Bimestre\prjRevisao\prjRevisao\obj\Debug\prjRevisao.Form1.resources
+C:\Users\Vitor\Documents\Documentos\Escola\Escola\3º ano\DS\2º Semestre\3º Bimestre\prjRevisao\prjRevisao\obj\Debug\prjRevisao.Properties.Resources.resources
+C:\Users\Vitor\Documents\Documentos\Escola\Escola\3º ano\DS\2º Semestre\3º Bimestre\prjRevisao\prjRevisao\obj\Debug\prjRevisao.csproj.GenerateResource.Cache
+C:\Users\Vitor\Documents\Documentos\Escola\Escola\3º ano\DS\2º Semestre\3º Bimestre\prjRevisao\prjRevisao\bin\Debug\prjRevisao.exe
+C:\Users\Vitor\Documents\Documentos\Escola\Escola\3º ano\DS\2º Semestre\3º Bimestre\prjRevisao\prjRevisao\bin\Debug\prjRevisao.pdb
+C:\Users\Vitor\Documents\Documentos\Escola\Escola\3º ano\DS\2º Semestre\3º Bimestre\prjRevisao\prjRevisao\obj\Debug\prjRevisao.exe
+C:\Users\Vitor\Documents\Documentos\Escola\Escola\3º ano\DS\2º Semestre\3º Bimestre\prjRevisao\prjRevisao\obj\Debug\prjRevisao.pdb
+C:\Users\vitor\Docs\ETIM\3º ano\DS\prjRevisao\prjRevisao\bin\Debug\prjRevisao.exe.config
+C:\Users\vitor\Docs\ETIM\3º ano\DS\prjRevisao\prjRevisao\obj\Debug\prjRevisao.exe
+C:\Users\vitor\Docs\ETIM\3º ano\DS\prjRevisao\prjRevisao\obj\Debug\prjRevisao.pdb
+C:\Users\vitor\Docs\ETIM\3º ano\DS\prjRevisao\prjRevisao\bin\Debug\prjRevisao.exe
+C:\Users\vitor\Docs\ETIM\3º ano\DS\prjRevisao\prjRevisao\bin\Debug\prjRevisao.pdb
+C:\Users\vitor\Docs\ETIM\3º ano\DS\prjRevisao\prjRevisao\obj\Debug\prjRevisao.csprojResolveAssemblyReference.cache
+C:\Users\vitor\Docs\ETIM\3º ano\DS\prjRevisao\prjRevisao\obj\Debug\prjRevisao.Form1.resources
+C:\Users\vitor\Docs\ETIM\3º ano\DS\prjRevisao\prjRevisao\obj\Debug\prjRevisao.Properties.Resources.resources
+C:\Users\vitor\Docs\ETIM\3º ano\DS\prjRevisao\prjRevisao\obj\Debug\prjRevisao.csproj.GenerateResource.Cache
+C:\Users\vitor\Docs\ETIM\3º ano\DS\Projeto Mercearia\prjMercearia\prjRevisao\bin\Debug\prjRevisao.exe.config
+C:\Users\vitor\Docs\ETIM\3º ano\DS\Projeto Mercearia\prjMercearia\prjRevisao\obj\Debug\prjRevisao.exe
+C:\Users\vitor\Docs\ETIM\3º ano\DS\Projeto Mercearia\prjMercearia\prjRevisao\obj\Debug\prjRevisao.pdb
+C:\Users\vitor\Docs\ETIM\3º ano\DS\Projeto Mercearia\prjMercearia\prjRevisao\bin\Debug\prjRevisao.exe
+C:\Users\vitor\Docs\ETIM\3º ano\DS\Projeto Mercearia\prjMercearia\prjRevisao\bin\Debug\prjRevisao.pdb
+C:\Users\vitor\Docs\ETIM\3º ano\DS\Projeto Mercearia\prjMercearia\prjRevisao\obj\Debug\prjRevisao.csprojResolveAssemblyReference.cache
+C:\Users\vitor\Docs\ETIM\3º ano\DS\Projeto Mercearia\prjMercearia\prjRevisao\obj\Debug\prjRevisao.Form1.resources
+C:\Users\vitor\Docs\ETIM\3º ano\DS\Projeto Mercearia\prjMercearia\prjRevisao\obj\Debug\prjRevisao.Properties.Resources.resources
+C:\Users\vitor\Docs\ETIM\3º ano\DS\Projeto Mercearia\prjMercearia\prjRevisao\obj\Debug\prjRevisao.csproj.GenerateResource.Cache
