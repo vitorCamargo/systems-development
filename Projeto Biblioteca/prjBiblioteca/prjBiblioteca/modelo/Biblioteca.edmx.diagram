@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="746175e83da54cd6bf70682ba6bf86b3" Name="Diagram1">
+        <EntityTypeShape EntityType="bibliotecaModelo.aluno" Width="1.5" PointX="5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bibliotecaModelo.autor" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bibliotecaModelo.curso" Width="1.5" PointX="2.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bibliotecaModelo.editora" Width="1.5" PointX="0.625" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bibliotecaModelo.genero" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bibliotecaModelo.livro" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="bibliotecaModelo.professor" Width="1.5" PointX="5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bibliotecaModelo.tend_bairro" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="bibliotecaModelo.tend_cidade" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="bibliotecaModelo.tend_endereco" Width="1.5" PointX="10.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bibliotecaModelo.usuarios" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="bibliotecaModelo.FK_CURSO" ManuallyRouted="false" />
+        <AssociationConnector Association="bibliotecaModelo.FK_AUTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="bibliotecaModelo.FK_CURSO_PROFESSOR" ManuallyRouted="false" />
+        <AssociationConnector Association="bibliotecaModelo.FK_EDITORA" ManuallyRouted="false" />
+        <AssociationConnector Association="bibliotecaModelo.FK_GENERO" ManuallyRouted="false" />
+        <AssociationConnector Association="bibliotecaModelo.FK_tend_bairro_1" ManuallyRouted="false" />
+        <AssociationConnector Association="bibliotecaModelo.FK_tend_endereco_2" ManuallyRouted="false" />
+        <AssociationConnector Association="bibliotecaModelo.fk_end_cidade_end_endereco1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
