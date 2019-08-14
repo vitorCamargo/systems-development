@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bibliotecaModeloStoreContainer" CdmEntityContainer="bibliotecaEntidades">
+    <EntitySetMapping Name="aluno">
+      <EntityTypeMapping TypeName="bibliotecaModelo.aluno">
+        <MappingFragment StoreEntitySet="aluno">
+          <ScalarProperty Name="idaluno" ColumnName="idaluno" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="nascimento" ColumnName="nascimento" />
+          <ScalarProperty Name="idcurso" ColumnName="idcurso" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="fone" ColumnName="fone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="sala" ColumnName="sala" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="autor">
+      <EntityTypeMapping TypeName="bibliotecaModelo.autor">
+        <MappingFragment StoreEntitySet="autor">
+          <ScalarProperty Name="idAutor" ColumnName="idAutor" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="nacionalidade" ColumnName="nacionalidade" />
+          <ScalarProperty Name="nascimento" ColumnName="nascimento" />
+          <ScalarProperty Name="ocupacao" ColumnName="ocupacao" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="curso">
+      <EntityTypeMapping TypeName="bibliotecaModelo.curso">
+        <MappingFragment StoreEntitySet="curso">
+          <ScalarProperty Name="idcurso" ColumnName="idcurso" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="editora">
+      <EntityTypeMapping TypeName="bibliotecaModelo.editora">
+        <MappingFragment StoreEntitySet="editora">
+          <ScalarProperty Name="idEditora" ColumnName="idEditora" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="genero">
+      <EntityTypeMapping TypeName="bibliotecaModelo.genero">
+        <MappingFragment StoreEntitySet="genero">
+          <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="livro">
+      <EntityTypeMapping TypeName="bibliotecaModelo.livro">
+        <MappingFragment StoreEntitySet="livro">
+          <ScalarProperty Name="idLivro" ColumnName="idLivro" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="idAutor" ColumnName="idAutor" />
+          <ScalarProperty Name="idEditora" ColumnName="idEditora" />
+          <ScalarProperty Name="nrpaginas" ColumnName="nrpaginas" />
+          <ScalarProperty Name="edicao" ColumnName="edicao" />
+          <ScalarProperty Name="publicacao" ColumnName="publicacao" />
+          <ScalarProperty Name="resumo" ColumnName="resumo" />
+          <ScalarProperty Name="codisbn" ColumnName="codisbn" />
+          <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="professor">
+      <EntityTypeMapping TypeName="bibliotecaModelo.professor">
+        <MappingFragment StoreEntitySet="professor">
+          <ScalarProperty Name="idprofessor" ColumnName="idprofessor" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="idcurso" ColumnName="idcurso" />
+          <ScalarProperty Name="fone" ColumnName="fone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tend_bairro">
+      <EntityTypeMapping TypeName="bibliotecaModelo.tend_bairro">
+        <MappingFragment StoreEntitySet="tend_bairro">
+          <ScalarProperty Name="id_bairro" ColumnName="id_bairro" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tend_cidade">
+      <EntityTypeMapping TypeName="bibliotecaModelo.tend_cidade">
+        <MappingFragment StoreEntitySet="tend_cidade">
+          <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tend_endereco">
+      <EntityTypeMapping TypeName="bibliotecaModelo.tend_endereco">
+        <MappingFragment StoreEntitySet="tend_endereco">
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+          <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+          <ScalarProperty Name="id_bairro" ColumnName="id_bairro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="bibliotecaModelo.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bibliotecaModelo.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="aluno">
+          <Key>
+            <PropertyRef Name="idaluno" />
+          </Key>
+          <Property Name="idaluno" Type="int" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="nascimento" Type="date" Nullable="false" />
+          <Property Name="idcurso" Type="int" Nullable="false" />
+          <Property Name="endereco" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="numero" Type="int" Nullable="false" />
+          <Property Name="bairro" Type="varchar" MaxLength="30" />
+          <Property Name="uf" Type="varchar" MaxLength="2" />
+          <Property Name="cep" Type="varchar" MaxLength="8" />
+          <Property Name="cidade" Type="varchar" MaxLength="8" />
+          <Property Name="fone" Type="varchar" MaxLength="12" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="sala" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="autor">
+          <Key>
+            <PropertyRef Name="idAutor" />
+          </Key>
+          <Property Name="idAutor" Type="int" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="nacionalidade" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="nascimento" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="ocupacao" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="telefone" Type="varchar" MaxLength="24" Nullable="false" />
+        </EntityType>
+        <EntityType Name="curso">
+          <Key>
+            <PropertyRef Name="idcurso" />
+          </Key>
+          <Property Name="idcurso" Type="int" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="editora">
+          <Key>
+            <PropertyRef Name="idEditora" />
+          </Key>
+          <Property Name="idEditora" Type="int" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="telefone" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="genero">
+          <Key>
+            <PropertyRef Name="idGenero" />
+          </Key>
+          <Property Name="idGenero" Type="int" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="livro">
+          <Key>
+            <PropertyRef Name="idLivro" />
+          </Key>
+          <Property Name="idLivro" Type="int" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="idAutor" Type="int" Nullable="false" />
+          <Property Name="idEditora" Type="int" Nullable="false" />
+          <Property Name="nrpaginas" Type="int" Nullable="false" />
+          <Property Name="edicao" Type="int" Nullable="false" />
+          <Property Name="publicacao" Type="date" Nullable="false" />
+          <Property Name="resumo" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="codisbn" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="idGenero" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="professor">
+          <Key>
+            <PropertyRef Name="idprofessor" />
+          </Key>
+          <Property Name="idprofessor" Type="int" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="idcurso" Type="int" Nullable="false" />
+          <Property Name="fone" Type="varchar" MaxLength="12" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tend_bairro">
+          <Key>
+            <PropertyRef Name="id_bairro" />
+          </Key>
+          <Property Name="id_bairro" Type="int" Nullable="false" />
+          <Property Name="bairro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_cidade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tend_cidade">
+          <Key>
+            <PropertyRef Name="id_cidade" />
+          </Key>
+          <Property Name="id_cidade" Type="int" Nullable="false" />
+          <Property Name="cidade" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="uf" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tend_endereco">
+          <Key>
+            <PropertyRef Name="cep" />
+          </Key>
+          <Property Name="cep" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="endereco" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="id_cidade" Type="int" Nullable="false" />
+          <Property Name="id_bairro" Type="int" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="idusuario" />
+          </Key>
+          <Property Name="idusuario" Type="int" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AUTOR">
+          <End Role="autor" Type="Self.autor" Multiplicity="1" />
+          <End Role="livro" Type="Self.livro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autor">
+              <PropertyRef Name="idAutor" />
+            </Principal>
+            <Dependent Role="livro">
+              <PropertyRef Name="idAutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURSO">
+          <End Role="curso" Type="Self.curso" Multiplicity="1" />
+          <End Role="aluno" Type="Self.aluno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curso">
+              <PropertyRef Name="idcurso" />
+            </Principal>
+            <Dependent Role="aluno">
+              <PropertyRef Name="idcurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURSO_PROFESSOR">
+          <End Role="curso" Type="Self.curso" Multiplicity="1" />
+          <End Role="professor" Type="Self.professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curso">
+              <PropertyRef Name="idcurso" />
+            </Principal>
+            <Dependent Role="professor">
+              <PropertyRef Name="idcurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDITORA">
+          <End Role="editora" Type="Self.editora" Multiplicity="1" />
+          <End Role="livro" Type="Self.livro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="editora">
+              <PropertyRef Name="idEditora" />
+            </Principal>
+            <Dependent Role="livro">
+              <PropertyRef Name="idEditora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_end_cidade_end_endereco1">
+          <End Role="tend_cidade" Type="Self.tend_cidade" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tend_endereco" Type="Self.tend_endereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tend_cidade">
+              <PropertyRef Name="id_cidade" />
+            </Principal>
+            <Dependent Role="tend_endereco">
+              <PropertyRef Name="id_cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GENERO">
+          <End Role="genero" Type="Self.genero" Multiplicity="1" />
+          <End Role="livro" Type="Self.livro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genero">
+              <PropertyRef Name="idGenero" />
+            </Principal>
+            <Dependent Role="livro">
+              <PropertyRef Name="idGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tend_bairro_1">
+          <End Role="tend_cidade" Type="Self.tend_cidade" Multiplicity="1" />
+          <End Role="tend_bairro" Type="Self.tend_bairro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tend_cidade">
+              <PropertyRef Name="id_cidade" />
+            </Principal>
+            <Dependent Role="tend_bairro">
+              <PropertyRef Name="id_cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tend_endereco_2">
+          <End Role="tend_bairro" Type="Self.tend_bairro" Multiplicity="0..1" />
+          <End Role="tend_endereco" Type="Self.tend_endereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tend_bairro">
+              <PropertyRef Name="id_bairro" />
+            </Principal>
+            <Dependent Role="tend_endereco">
+              <PropertyRef Name="id_bairro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bibliotecaModeloStoreContainer">
+          <EntitySet Name="aluno" EntityType="Self.aluno" Schema="biblioteca" store:Type="Tables" />
+          <EntitySet Name="autor" EntityType="Self.autor" Schema="biblioteca" store:Type="Tables" />
+          <EntitySet Name="curso" EntityType="Self.curso" Schema="biblioteca" store:Type="Tables" />
+          <EntitySet Name="editora" EntityType="Self.editora" Schema="biblioteca" store:Type="Tables" />
+          <EntitySet Name="genero" EntityType="Self.genero" Schema="biblioteca" store:Type="Tables" />
+          <EntitySet Name="livro" EntityType="Self.livro" Schema="biblioteca" store:Type="Tables" />
+          <EntitySet Name="professor" EntityType="Self.professor" Schema="biblioteca" store:Type="Tables" />
+          <EntitySet Name="tend_bairro" EntityType="Self.tend_bairro" Schema="biblioteca" store:Type="Tables" />
+          <EntitySet Name="tend_cidade" EntityType="Self.tend_cidade" Schema="biblioteca" store:Type="Tables" />
+          <EntitySet Name="tend_endereco" EntityType="Self.tend_endereco" Schema="biblioteca" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="biblioteca" store:Type="Tables" />
+          <AssociationSet Name="FK_AUTOR" Association="Self.FK_AUTOR">
+            <End Role="autor" EntitySet="autor" />
+            <End Role="livro" EntitySet="livro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURSO" Association="Self.FK_CURSO">
+            <End Role="curso" EntitySet="curso" />
+            <End Role="aluno" EntitySet="aluno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURSO_PROFESSOR" Association="Self.FK_CURSO_PROFESSOR">
+            <End Role="curso" EntitySet="curso" />
+            <End Role="professor" EntitySet="professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDITORA" Association="Self.FK_EDITORA">
+            <End Role="editora" EntitySet="editora" />
+            <End Role="livro" EntitySet="livro" />
+          </AssociationSet>
+          <AssociationSet Name="fk_end_cidade_end_endereco1" Association="Self.fk_end_cidade_end_endereco1">
+            <End Role="tend_cidade" EntitySet="tend_cidade" />
+            <End Role="tend_endereco" EntitySet="tend_endereco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GENERO" Association="Self.FK_GENERO">
+            <End Role="genero" EntitySet="genero" />
+            <End Role="livro" EntitySet="livro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tend_bairro_1" Association="Self.FK_tend_bairro_1">
+            <End Role="tend_cidade" EntitySet="tend_cidade" />
+            <End Role="tend_bairro" EntitySet="tend_bairro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tend_endereco_2" Association="Self.FK_tend_endereco_2">
+            <End Role="tend_bairro" EntitySet="tend_bairro" />
+            <End Role="tend_endereco" EntitySet="tend_endereco" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bibliotecaModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="aluno">
+          <Key>
+            <PropertyRef Name="idaluno" />
+          </Key>
+          <Property Name="idaluno" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nascimento" Type="DateTime" Nullable="false" />
+          <Property Name="idcurso" Type="Int32" Nullable="false" />
+          <Property Name="endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numero" Type="Int32" Nullable="false" />
+          <Property Name="bairro" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cidade" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="fone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sala" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="curso" Relationship="Self.FK_CURSO" FromRole="aluno" ToRole="curso" />
+        </EntityType>
+        <EntityType Name="autor">
+          <Key>
+            <PropertyRef Name="idAutor" />
+          </Key>
+          <Property Name="idAutor" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nacionalidade" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nascimento" Type="DateTime" Nullable="false" />
+          <Property Name="ocupacao" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefone" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="livro" Relationship="Self.FK_AUTOR" FromRole="autor" ToRole="livro" />
+        </EntityType>
+        <EntityType Name="curso">
+          <Key>
+            <PropertyRef Name="idcurso" />
+          </Key>
+          <Property Name="idcurso" Type="Int32" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aluno" Relationship="Self.FK_CURSO" FromRole="curso" ToRole="aluno" />
+          <NavigationProperty Name="professor" Relationship="Self.FK_CURSO_PROFESSOR" FromRole="curso" ToRole="professor" />
+        </EntityType>
+        <EntityType Name="editora">
+          <Key>
+            <PropertyRef Name="idEditora" />
+          </Key>
+          <Property Name="idEditora" Type="Int32" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefone" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="livro" Relationship="Self.FK_EDITORA" FromRole="editora" ToRole="livro" />
+        </EntityType>
+        <EntityType Name="genero">
+          <Key>
+            <PropertyRef Name="idGenero" />
+          </Key>
+          <Property Name="idGenero" Type="Int32" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="livro" Relationship="Self.FK_GENERO" FromRole="genero" ToRole="livro" />
+        </EntityType>
+        <EntityType Name="livro">
+          <Key>
+            <PropertyRef Name="idLivro" />
+          </Key>
+          <Property Name="idLivro" Type="Int32" Nullable="false" />
+          <Property Name="titulo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idAutor" Type="Int32" Nullable="false" />
+          <Property Name="idEditora" Type="Int32" Nullable="false" />
+          <Property Name="nrpaginas" Type="Int32" Nullable="false" />
+          <Property Name="edicao" Type="Int32" Nullable="false" />
+          <Property Name="publicacao" Type="DateTime" Nullable="false" />
+          <Property Name="resumo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codisbn" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idGenero" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="autor" Relationship="Self.FK_AUTOR" FromRole="livro" ToRole="autor" />
+          <NavigationProperty Name="editora" Relationship="Self.FK_EDITORA" FromRole="livro" ToRole="editora" />
+          <NavigationProperty Name="genero" Relationship="Self.FK_GENERO" FromRole="livro" ToRole="genero" />
+        </EntityType>
+        <EntityType Name="professor">
+          <Key>
+            <PropertyRef Name="idprofessor" />
+          </Key>
+          <Property Name="idprofessor" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idcurso" Type="Int32" Nullable="false" />
+          <Property Name="fone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="curso" Relationship="Self.FK_CURSO_PROFESSOR" FromRole="professor" ToRole="curso" />
+        </EntityType>
+        <EntityType Name="tend_bairro">
+          <Key>
+            <PropertyRef Name="id_bairro" />
+          </Key>
+          <Property Name="id_bairro" Type="Int32" Nullable="false" />
+          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_cidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tend_cidade" Relationship="Self.FK_tend_bairro_1" FromRole="tend_bairro" ToRole="tend_cidade" />
+          <NavigationProperty Name="tend_endereco" Relationship="Self.FK_tend_endereco_2" FromRole="tend_bairro" ToRole="tend_endereco" />
+        </EntityType>
+        <EntityType Name="tend_cidade">
+          <Key>
+            <PropertyRef Name="id_cidade" />
+          </Key>
+          <Property Name="id_cidade" Type="Int32" Nullable="false" />
+          <Property Name="cidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tend_bairro" Relationship="Self.FK_tend_bairro_1" FromRole="tend_cidade" ToRole="tend_bairro" />
+          <NavigationProperty Name="tend_endereco" Relationship="Self.fk_end_cidade_end_endereco1" FromRole="tend_cidade" ToRole="tend_endereco" />
+        </EntityType>
+        <EntityType Name="tend_endereco">
+          <Key>
+            <PropertyRef Name="cep" />
+          </Key>
+          <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="endereco" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_cidade" Type="Int32" Nullable="false" />
+          <Property Name="id_bairro" Type="Int32" />
+          <NavigationProperty Name="tend_bairro" Relationship="Self.FK_tend_endereco_2" FromRole="tend_endereco" ToRole="tend_bairro" />
+          <NavigationProperty Name="tend_cidade" Relationship="Self.fk_end_cidade_end_endereco1" FromRole="tend_endereco" ToRole="tend_cidade" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="idusuario" />
+          </Key>
+          <Property Name="idusuario" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CURSO">
+          <End Role="curso" Type="Self.curso" Multiplicity="1" />
+          <End Role="aluno" Type="Self.aluno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curso">
+              <PropertyRef Name="idcurso" />
+            </Principal>
+            <Dependent Role="aluno">
+              <PropertyRef Name="idcurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTOR">
+          <End Role="autor" Type="Self.autor" Multiplicity="1" />
+          <End Role="livro" Type="Self.livro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autor">
+              <PropertyRef Name="idAutor" />
+            </Principal>
+            <Dependent Role="livro">
+              <PropertyRef Name="idAutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CURSO_PROFESSOR">
+          <End Role="curso" Type="Self.curso" Multiplicity="1" />
+          <End Role="professor" Type="Self.professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curso">
+              <PropertyRef Name="idcurso" />
+            </Principal>
+            <Dependent Role="professor">
+              <PropertyRef Name="idcurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EDITORA">
+          <End Role="editora" Type="Self.editora" Multiplicity="1" />
+          <End Role="livro" Type="Self.livro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="editora">
+              <PropertyRef Name="idEditora" />
+            </Principal>
+            <Dependent Role="livro">
+              <PropertyRef Name="idEditora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GENERO">
+          <End Role="genero" Type="Self.genero" Multiplicity="1" />
+          <End Role="livro" Type="Self.livro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genero">
+              <PropertyRef Name="idGenero" />
+            </Principal>
+            <Dependent Role="livro">
+              <PropertyRef Name="idGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tend_bairro_1">
+          <End Role="tend_cidade" Type="Self.tend_cidade" Multiplicity="1" />
+          <End Role="tend_bairro" Type="Self.tend_bairro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tend_cidade">
+              <PropertyRef Name="id_cidade" />
+            </Principal>
+            <Dependent Role="tend_bairro">
+              <PropertyRef Name="id_cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tend_endereco_2">
+          <End Role="tend_bairro" Type="Self.tend_bairro" Multiplicity="0..1" />
+          <End Role="tend_endereco" Type="Self.tend_endereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tend_bairro">
+              <PropertyRef Name="id_bairro" />
+            </Principal>
+            <Dependent Role="tend_endereco">
+              <PropertyRef Name="id_bairro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_end_cidade_end_endereco1">
+          <End Role="tend_cidade" Type="Self.tend_cidade" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tend_endereco" Type="Self.tend_endereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tend_cidade">
+              <PropertyRef Name="id_cidade" />
+            </Principal>
+            <Dependent Role="tend_endereco">
+              <PropertyRef Name="id_cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bibliotecaEntidades" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="aluno" EntityType="Self.aluno" />
+          <EntitySet Name="autor" EntityType="Self.autor" />
+          <EntitySet Name="curso" EntityType="Self.curso" />
+          <EntitySet Name="editora" EntityType="Self.editora" />
+          <EntitySet Name="genero" EntityType="Self.genero" />
+          <EntitySet Name="livro" EntityType="Self.livro" />
+          <EntitySet Name="professor" EntityType="Self.professor" />
+          <EntitySet Name="tend_bairro" EntityType="Self.tend_bairro" />
+          <EntitySet Name="tend_cidade" EntityType="Self.tend_cidade" />
+          <EntitySet Name="tend_endereco" EntityType="Self.tend_endereco" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <AssociationSet Name="FK_CURSO" Association="Self.FK_CURSO">
+            <End Role="curso" EntitySet="curso" />
+            <End Role="aluno" EntitySet="aluno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTOR" Association="Self.FK_AUTOR">
+            <End Role="autor" EntitySet="autor" />
+            <End Role="livro" EntitySet="livro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CURSO_PROFESSOR" Association="Self.FK_CURSO_PROFESSOR">
+            <End Role="curso" EntitySet="curso" />
+            <End Role="professor" EntitySet="professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EDITORA" Association="Self.FK_EDITORA">
+            <End Role="editora" EntitySet="editora" />
+            <End Role="livro" EntitySet="livro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GENERO" Association="Self.FK_GENERO">
+            <End Role="genero" EntitySet="genero" />
+            <End Role="livro" EntitySet="livro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tend_bairro_1" Association="Self.FK_tend_bairro_1">
+            <End Role="tend_cidade" EntitySet="tend_cidade" />
+            <End Role="tend_bairro" EntitySet="tend_bairro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tend_endereco_2" Association="Self.FK_tend_endereco_2">
+            <End Role="tend_bairro" EntitySet="tend_bairro" />
+            <End Role="tend_endereco" EntitySet="tend_endereco" />
+          </AssociationSet>
+          <AssociationSet Name="fk_end_cidade_end_endereco1" Association="Self.fk_end_cidade_end_endereco1">
+            <End Role="tend_cidade" EntitySet="tend_cidade" />
+            <End Role="tend_endereco" EntitySet="tend_endereco" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bibliotecaModeloStoreContainer" CdmEntityContainer="bibliotecaEntidades">
+          <EntitySetMapping Name="aluno">
+            <EntityTypeMapping TypeName="bibliotecaModelo.aluno">
+              <MappingFragment StoreEntitySet="aluno">
+                <ScalarProperty Name="idaluno" ColumnName="idaluno" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="nascimento" ColumnName="nascimento" />
+                <ScalarProperty Name="idcurso" ColumnName="idcurso" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="fone" ColumnName="fone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="sala" ColumnName="sala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="autor">
+            <EntityTypeMapping TypeName="bibliotecaModelo.autor">
+              <MappingFragment StoreEntitySet="autor">
+                <ScalarProperty Name="idAutor" ColumnName="idAutor" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="nacionalidade" ColumnName="nacionalidade" />
+                <ScalarProperty Name="nascimento" ColumnName="nascimento" />
+                <ScalarProperty Name="ocupacao" ColumnName="ocupacao" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="curso">
+            <EntityTypeMapping TypeName="bibliotecaModelo.curso">
+              <MappingFragment StoreEntitySet="curso">
+                <ScalarProperty Name="idcurso" ColumnName="idcurso" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="editora">
+            <EntityTypeMapping TypeName="bibliotecaModelo.editora">
+              <MappingFragment StoreEntitySet="editora">
+                <ScalarProperty Name="idEditora" ColumnName="idEditora" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genero">
+            <EntityTypeMapping TypeName="bibliotecaModelo.genero">
+              <MappingFragment StoreEntitySet="genero">
+                <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="livro">
+            <EntityTypeMapping TypeName="bibliotecaModelo.livro">
+              <MappingFragment StoreEntitySet="livro">
+                <ScalarProperty Name="idLivro" ColumnName="idLivro" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="idAutor" ColumnName="idAutor" />
+                <ScalarProperty Name="idEditora" ColumnName="idEditora" />
+                <ScalarProperty Name="nrpaginas" ColumnName="nrpaginas" />
+                <ScalarProperty Name="edicao" ColumnName="edicao" />
+                <ScalarProperty Name="publicacao" ColumnName="publicacao" />
+                <ScalarProperty Name="resumo" ColumnName="resumo" />
+                <ScalarProperty Name="codisbn" ColumnName="codisbn" />
+                <ScalarProperty Name="idGenero" ColumnName="idGenero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="professor">
+            <EntityTypeMapping TypeName="bibliotecaModelo.professor">
+              <MappingFragment StoreEntitySet="professor">
+                <ScalarProperty Name="idprofessor" ColumnName="idprofessor" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="idcurso" ColumnName="idcurso" />
+                <ScalarProperty Name="fone" ColumnName="fone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tend_bairro">
+            <EntityTypeMapping TypeName="bibliotecaModelo.tend_bairro">
+              <MappingFragment StoreEntitySet="tend_bairro">
+                <ScalarProperty Name="id_bairro" ColumnName="id_bairro" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tend_cidade">
+            <EntityTypeMapping TypeName="bibliotecaModelo.tend_cidade">
+              <MappingFragment StoreEntitySet="tend_cidade">
+                <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tend_endereco">
+            <EntityTypeMapping TypeName="bibliotecaModelo.tend_endereco">
+              <MappingFragment StoreEntitySet="tend_endereco">
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+                <ScalarProperty Name="id_bairro" ColumnName="id_bairro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="bibliotecaModelo.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

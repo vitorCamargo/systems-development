@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bibliotecaModelo.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="aluno">
+    <Key>
+      <PropertyRef Name="idaluno" />
+    </Key>
+    <Property Name="idaluno" Type="int" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="nascimento" Type="date" Nullable="false" />
+    <Property Name="idcurso" Type="int" Nullable="false" />
+    <Property Name="endereco" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="numero" Type="int" Nullable="false" />
+    <Property Name="bairro" Type="varchar" MaxLength="30" />
+    <Property Name="uf" Type="varchar" MaxLength="2" />
+    <Property Name="cep" Type="varchar" MaxLength="8" />
+    <Property Name="cidade" Type="varchar" MaxLength="8" />
+    <Property Name="fone" Type="varchar" MaxLength="12" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="sala" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="autor">
+    <Key>
+      <PropertyRef Name="idAutor" />
+    </Key>
+    <Property Name="idAutor" Type="int" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="nacionalidade" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="nascimento" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="ocupacao" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="telefone" Type="varchar" MaxLength="24" Nullable="false" />
+  </EntityType>
+  <EntityType Name="curso">
+    <Key>
+      <PropertyRef Name="idcurso" />
+    </Key>
+    <Property Name="idcurso" Type="int" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="editora">
+    <Key>
+      <PropertyRef Name="idEditora" />
+    </Key>
+    <Property Name="idEditora" Type="int" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="estado" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="telefone" Type="varchar" MaxLength="24" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="genero">
+    <Key>
+      <PropertyRef Name="idGenero" />
+    </Key>
+    <Property Name="idGenero" Type="int" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="livro">
+    <Key>
+      <PropertyRef Name="idLivro" />
+    </Key>
+    <Property Name="idLivro" Type="int" Nullable="false" />
+    <Property Name="titulo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="idAutor" Type="int" Nullable="false" />
+    <Property Name="idEditora" Type="int" Nullable="false" />
+    <Property Name="nrpaginas" Type="int" Nullable="false" />
+    <Property Name="edicao" Type="int" Nullable="false" />
+    <Property Name="publicacao" Type="date" Nullable="false" />
+    <Property Name="resumo" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="codisbn" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="idGenero" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="professor">
+    <Key>
+      <PropertyRef Name="idprofessor" />
+    </Key>
+    <Property Name="idprofessor" Type="int" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="idcurso" Type="int" Nullable="false" />
+    <Property Name="fone" Type="varchar" MaxLength="12" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tend_bairro">
+    <Key>
+      <PropertyRef Name="id_bairro" />
+    </Key>
+    <Property Name="id_bairro" Type="int" Nullable="false" />
+    <Property Name="bairro" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_cidade" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tend_cidade">
+    <Key>
+      <PropertyRef Name="id_cidade" />
+    </Key>
+    <Property Name="id_cidade" Type="int" Nullable="false" />
+    <Property Name="cidade" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="uf" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tend_endereco">
+    <Key>
+      <PropertyRef Name="cep" />
+    </Key>
+    <Property Name="cep" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="endereco" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="id_cidade" Type="int" Nullable="false" />
+    <Property Name="id_bairro" Type="int" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="idusuario" />
+    </Key>
+    <Property Name="idusuario" Type="int" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="senha" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="tipo" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AUTOR">
+    <End Role="autor" Type="Self.autor" Multiplicity="1" />
+    <End Role="livro" Type="Self.livro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="autor">
+        <PropertyRef Name="idAutor" />
+      </Principal>
+      <Dependent Role="livro">
+        <PropertyRef Name="idAutor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CURSO">
+    <End Role="curso" Type="Self.curso" Multiplicity="1" />
+    <End Role="aluno" Type="Self.aluno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="curso">
+        <PropertyRef Name="idcurso" />
+      </Principal>
+      <Dependent Role="aluno">
+        <PropertyRef Name="idcurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CURSO_PROFESSOR">
+    <End Role="curso" Type="Self.curso" Multiplicity="1" />
+    <End Role="professor" Type="Self.professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="curso">
+        <PropertyRef Name="idcurso" />
+      </Principal>
+      <Dependent Role="professor">
+        <PropertyRef Name="idcurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EDITORA">
+    <End Role="editora" Type="Self.editora" Multiplicity="1" />
+    <End Role="livro" Type="Self.livro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="editora">
+        <PropertyRef Name="idEditora" />
+      </Principal>
+      <Dependent Role="livro">
+        <PropertyRef Name="idEditora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_end_cidade_end_endereco1">
+    <End Role="tend_cidade" Type="Self.tend_cidade" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tend_endereco" Type="Self.tend_endereco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tend_cidade">
+        <PropertyRef Name="id_cidade" />
+      </Principal>
+      <Dependent Role="tend_endereco">
+        <PropertyRef Name="id_cidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GENERO">
+    <End Role="genero" Type="Self.genero" Multiplicity="1" />
+    <End Role="livro" Type="Self.livro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genero">
+        <PropertyRef Name="idGenero" />
+      </Principal>
+      <Dependent Role="livro">
+        <PropertyRef Name="idGenero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tend_bairro_1">
+    <End Role="tend_cidade" Type="Self.tend_cidade" Multiplicity="1" />
+    <End Role="tend_bairro" Type="Self.tend_bairro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tend_cidade">
+        <PropertyRef Name="id_cidade" />
+      </Principal>
+      <Dependent Role="tend_bairro">
+        <PropertyRef Name="id_cidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tend_endereco_2">
+    <End Role="tend_bairro" Type="Self.tend_bairro" Multiplicity="0..1" />
+    <End Role="tend_endereco" Type="Self.tend_endereco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tend_bairro">
+        <PropertyRef Name="id_bairro" />
+      </Principal>
+      <Dependent Role="tend_endereco">
+        <PropertyRef Name="id_bairro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bibliotecaModeloStoreContainer">
+    <EntitySet Name="aluno" EntityType="Self.aluno" Schema="biblioteca" store:Type="Tables" />
+    <EntitySet Name="autor" EntityType="Self.autor" Schema="biblioteca" store:Type="Tables" />
+    <EntitySet Name="curso" EntityType="Self.curso" Schema="biblioteca" store:Type="Tables" />
+    <EntitySet Name="editora" EntityType="Self.editora" Schema="biblioteca" store:Type="Tables" />
+    <EntitySet Name="genero" EntityType="Self.genero" Schema="biblioteca" store:Type="Tables" />
+    <EntitySet Name="livro" EntityType="Self.livro" Schema="biblioteca" store:Type="Tables" />
+    <EntitySet Name="professor" EntityType="Self.professor" Schema="biblioteca" store:Type="Tables" />
+    <EntitySet Name="tend_bairro" EntityType="Self.tend_bairro" Schema="biblioteca" store:Type="Tables" />
+    <EntitySet Name="tend_cidade" EntityType="Self.tend_cidade" Schema="biblioteca" store:Type="Tables" />
+    <EntitySet Name="tend_endereco" EntityType="Self.tend_endereco" Schema="biblioteca" store:Type="Tables" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="biblioteca" store:Type="Tables" />
+    <AssociationSet Name="FK_AUTOR" Association="Self.FK_AUTOR">
+      <End Role="autor" EntitySet="autor" />
+      <End Role="livro" EntitySet="livro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CURSO" Association="Self.FK_CURSO">
+      <End Role="curso" EntitySet="curso" />
+      <End Role="aluno" EntitySet="aluno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CURSO_PROFESSOR" Association="Self.FK_CURSO_PROFESSOR">
+      <End Role="curso" EntitySet="curso" />
+      <End Role="professor" EntitySet="professor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EDITORA" Association="Self.FK_EDITORA">
+      <End Role="editora" EntitySet="editora" />
+      <End Role="livro" EntitySet="livro" />
+    </AssociationSet>
+    <AssociationSet Name="fk_end_cidade_end_endereco1" Association="Self.fk_end_cidade_end_endereco1">
+      <End Role="tend_cidade" EntitySet="tend_cidade" />
+      <End Role="tend_endereco" EntitySet="tend_endereco" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GENERO" Association="Self.FK_GENERO">
+      <End Role="genero" EntitySet="genero" />
+      <End Role="livro" EntitySet="livro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tend_bairro_1" Association="Self.FK_tend_bairro_1">
+      <End Role="tend_cidade" EntitySet="tend_cidade" />
+      <End Role="tend_bairro" EntitySet="tend_bairro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tend_endereco_2" Association="Self.FK_tend_endereco_2">
+      <End Role="tend_bairro" EntitySet="tend_bairro" />
+      <End Role="tend_endereco" EntitySet="tend_endereco" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
