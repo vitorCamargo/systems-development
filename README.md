@@ -1,2 +1,10 @@
-# DS
-Projetos da matéria de 'Desenvolvimento de Sistemas' - Ensino Técnico Integrado ao Médio
+# Pratice for 
+🤜 Projects developed for 'Systems Development' subject in High School
+
+All projects (just the 2 of them) were developed with C# Programming Language, but the speaking language was Portuguese 🇧🇷.
+
+## Projeto Biblioteca / Library Project
+The main objective of this project was create a system to manage Books, Professors and Students, integrating the map for Students' addresses and reports.
+
+## Projeto Mercearia / Grocery Store Project
+The objective of this project was create a Grocery Store Cachier, where you can add/remove products in a cart.
