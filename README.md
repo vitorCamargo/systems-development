@@ -1,4 +1,4 @@
-# Pratice for 
+# Systems Development Projects
 🤜 Projects developed for 'Systems Development' subject in High School
 
 ## More Informations
